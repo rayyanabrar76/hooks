@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ */
+/* HOOKS brand tokens — single source of truth for design primitives. */
+/* Consumed by Tailwind v4 via @theme (e.g. bg-ink, text-accent).      */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces (light theme) */
+  --color-void: #f4f4f4; /* light-grey section blocks          */
+  --color-ink: #ffffff; /* white page background              */
+  --color-elevated: #efefef; /* cards / raised surfaces        */
+
+  /* Text */
+  --color-bone: #0a0a0a; /* primary near-black text            */
+  --color-ash: #666666; /* muted / secondary text             */
+  --color-on-accent: #ffffff; /* text/icons on the red accent  */
+
+  /* Accent */
+  --color-signal: #e10600; /* signal red — CTAs, wordmark, hover */
+  --color-signal-dim: #b30500;
+
+  /* Lines */
+  --color-hairline: #e4e4e4; /* hairline borders / dividers     */
+
+  /* Type */
+  --font-display: var(--font-display); /* Bebas Neue — condensed  */
+  --font-sans: var(--font-inter); /* Inter — body               */
+
+  /* Motion */
+  --ease-out-brand: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base ------------------------------------------------------------- */
+html {
+  background-color: var(--color-ink);
+  color-scheme: light;
+  /* Shrink the whole site's type: all rem-based sizes scale from here. */
+  font-size: 14.5px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dark theme — flips the semantic surface/text tokens. Utilities like  */
+/* bg-ink / text-bone / border-hairline reference these vars, so the    */
+/* whole UI adapts. The signal red + on-accent stay constant. Toggled   */
+/* by the `dark` class on <html> (set pre-paint by the layout script).  */
+/* ------------------------------------------------------------------ */
+html.dark {
+  color-scheme: dark;
+  --color-ink: #0f0f0f; /* page background            */
+  --color-void: #171717; /* section blocks           */
+  --color-elevated: #1e1e1e; /* cards / raised        */
+  --color-bone: #f2f2f2; /* primary text             */
+  --color-ash: #9a9a9a; /* muted / secondary text    */
+  --color-hairline: #2a2a2a; /* borders / dividers    */
+}
+
+/* Condensed display face defaults: wide tracking, tight leading. */
+.font-display {
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-signal);
+  color: var(--color-on-accent);
+}
+
+/* Hero entrance — a restrained, premium "focus-in" reveal.
+   `hero-focus` animates opacity/blur only, so it is safe on elements that
+   already use a transform for centring; `hero-rise` adds a short lift for
+   elements with no transform of their own. Both honour the reduced-motion
+   rule below (which collapses all animation durations). */
+@keyframes hero-focus {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus visibility — accessible keyboard nav on dark ground. */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/* Thin dark scrollbars to match the editorial mood. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hairline) transparent;
+}
+
+/* Respect reduced-motion preferences globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

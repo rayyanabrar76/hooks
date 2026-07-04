@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HOOKS — Storefront
 
-## Getting Started
+Production storefront for **HOOKS**, an Indian streetwear label. Next.js (App
+Router) + TypeScript (strict) + Tailwind v4. No backend — orders complete over
+WhatsApp with a pre-filled message.
 
-First, run the development server:
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # then set your WhatsApp number
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All brand-level constants live in [`lib/site.ts`](lib/site.ts). Environment
+overrides (see [`.env.example`](.env.example)):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Order line, digits only w/ country code, e.g. `9198…` |
+| `NEXT_PUBLIC_SITE_URL` | Absolute base for metadata / OpenGraph |
 
-## Learn More
+## Where things live
 
-To learn more about Next.js, take a look at the following resources:
+- **Product data (single source of truth):** [`data/products.ts`](data/products.ts)
+  + [`data/types.ts`](data/types.ts). Swap the arrays for a CMS fetch of the
+  same shape and every component keeps working (they read via the selector
+  helpers).
+- **Design tokens:** `@theme` block in [`app/globals.css`](app/globals.css)
+  (`bg-ink`, `text-bone`, `text-ash`, `bg-signal`, `text-on-accent`,
+  `border-hairline`, …).
+- **Cart:** [`store/cart.ts`](store/cart.ts) — Zustand, persisted to
+  localStorage. **Drawer state:** [`store/ui.ts`](store/ui.ts).
+- **WhatsApp checkout:** [`lib/whatsapp.ts`](lib/whatsapp.ts).
+- **Logo:** [`components/brand/Logo.tsx`](components/brand/Logo.tsx) — drop your
+  SVG/PNG in `/public` and swap the text span.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Product, category and lookbook imagery is served from **Unsplash** and defined
+in [`data/products.ts`](data/products.ts) (`img()` helper + `POOL` of photo
+ids). The host is allowlisted in [`next.config.ts`](next.config.ts). Swap these
+URLs for your own product photography before launch — change nothing else.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Does |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run build` / `npm start` | Production build / serve |
+| `npm run lint` | ESLint |
