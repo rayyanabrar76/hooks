@@ -5,8 +5,14 @@
  */
 export const SITE = {
   name: "HOOKS",
-  // Used by metadataBase / OpenGraph. Override with NEXT_PUBLIC_SITE_URL in prod.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hooks.example.com",
+  // Used by metadataBase / OpenGraph — must be the real deployed origin so
+  // og:image, canonical, sitemap etc. resolve to fetchable URLs. Prefers an
+  // explicit override, then Vercel's production domain, then the live fallback.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://hooksin.vercel.app"),
   description:
     "HOOKS — bold, minimal streetwear. Wide-leg denim, boxy shirts, polos and drop-culture essentials.",
   instagram: "hooks.tlpb",
