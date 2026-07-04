@@ -8,7 +8,7 @@ export const SITE = {
   // Used by metadataBase / OpenGraph. Override with NEXT_PUBLIC_SITE_URL in prod.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hooks.example.com",
   description:
-    "HOOKS — bold, minimal Indian streetwear. Wide-leg denim, boxy shirts, polos and drop-culture essentials.",
+    "HOOKS — bold, minimal streetwear. Wide-leg denim, boxy shirts, polos and drop-culture essentials.",
   instagram: "hooks.tlpb",
   instagramUrl: "https://instagram.com/hooks.tlpb",
   facebookUrl: "https://facebook.com/hooks.tlpb",
