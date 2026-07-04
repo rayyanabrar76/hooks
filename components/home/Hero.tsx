@@ -15,7 +15,7 @@ import { StarLink } from "@/components/motion/StarLink";
  */
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-svh flex-col items-center justify-end overflow-hidden bg-ink">
+    <section className="relative isolate flex min-h-svh flex-col items-center justify-center overflow-hidden bg-ink sm:justify-end">
       {/* Depth: a barely-there vignette focuses the eye on the figure. */}
       <div
         aria-hidden
@@ -29,7 +29,7 @@ export function Hero() {
       {/* Ground shadow — anchors the cut-out so it isn't floating. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-5 left-1/2 z-0 h-14 w-72 -translate-x-1/2"
+        className="pointer-events-none absolute bottom-[14%] left-1/2 z-0 h-14 w-72 -translate-x-1/2 sm:bottom-5"
         style={{
           background:
             "radial-gradient(closest-side, rgba(10,10,10,0.20), transparent)",
@@ -78,7 +78,7 @@ export function Hero() {
       {/* Giant gradient wordmark the figure emerges from */}
       <h1
         aria-hidden
-        className="pointer-events-none absolute bottom-[30%] left-1/2 z-0 -translate-x-1/2 animate-[hero-focus_1s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] select-none whitespace-nowrap bg-linear-to-b from-[#c40600] to-[#870400] bg-clip-text font-display text-[37vw] leading-[0.78] tracking-tight text-transparent md:text-[27vw]"
+        className="pointer-events-none absolute bottom-[42%] left-1/2 z-0 -translate-x-1/2 animate-[hero-focus_1s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] select-none whitespace-nowrap bg-linear-to-b from-[#c40600] to-[#870400] bg-clip-text font-display text-[37vw] leading-[0.78] tracking-tight text-transparent sm:bottom-[30%] md:text-[27vw]"
       >
         HOOKS
       </h1>
