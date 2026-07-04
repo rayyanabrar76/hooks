@@ -99,7 +99,7 @@ export function Hero() {
           StarLink plays the brand star-wipe on the first shop click per session. */}
       <StarLink
         href="/shop"
-        className="group absolute left-1/2 top-[80%] z-20 inline-flex -translate-x-1/2 -translate-y-1/2 animate-[hero-focus_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_both] items-center gap-2 whitespace-nowrap bg-bone px-7 py-4 text-sm font-semibold uppercase tracking-widest text-ink shadow-xl shadow-black/15 transition-colors hover:bg-signal sm:top-auto sm:bottom-9 sm:translate-y-0 sm:px-8"
+        className="group absolute left-1/2 top-[74%] z-20 inline-flex -translate-x-1/2 -translate-y-1/2 animate-[hero-focus_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_both] items-center gap-2 whitespace-nowrap bg-bone px-7 py-4 text-sm font-semibold uppercase tracking-widest text-ink shadow-xl shadow-black/15 transition-colors hover:bg-signal sm:top-auto sm:bottom-9 sm:translate-y-0 sm:px-8"
       >
         Shop the collection
         <ArrowRight
