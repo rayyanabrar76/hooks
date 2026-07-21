@@ -86,7 +86,7 @@ export function Hero() {
       {/* Figure stage — anchored to the section baseline */}
       <div className="relative z-10 h-[64svh] w-full max-w-lg animate-[hero-rise_0.9s_cubic-bezier(0.16,1,0.3,1)_0.2s_both] px-4 sm:h-[76svh]">
         <Image
-          src={heroModel}
+          src="/hero1.png"
           alt="HOOKS — new season streetwear"
           fill
           priority
