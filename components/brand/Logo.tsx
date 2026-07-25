@@ -38,8 +38,8 @@ export function Logo({
         width={LOGO_WIDTH}
         height={LOGO_HEIGHT}
         priority
-        quality={100}
-        // Serve the original PNG (no re-encode/upscale) so it's as crisp as possible.
+        // Serve the original PNG (no re-encode/upscale) so it's as crisp as
+        // possible. This also makes `quality` a no-op, so it isn't set.
         unoptimized
         className={cn("h-full w-auto", onDark ? "invert" : "brand-mark")}
       />

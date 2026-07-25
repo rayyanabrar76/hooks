@@ -93,7 +93,7 @@ export function Hero() {
           width={LOGO_WIDTH}
           height={LOGO_HEIGHT}
           priority
-          quality={100}
+          // `unoptimized` serves the PNG as-is, so `quality` would be a no-op.
           unoptimized
           className="brand-mark h-auto w-full"
         />
