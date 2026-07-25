@@ -15,8 +15,8 @@ export const SITE = {
       : "https://hooksin.vercel.app"),
   description:
     "HOOKS — bold, minimal streetwear. Wide-leg denim, boxy shirts, polos and drop-culture essentials.",
-  instagram: "hooks.tlpb",
-  instagramUrl: "https://instagram.com/hooks.tlpb",
+  instagram: "hooks.pynr",
+  instagramUrl: "https://instagram.com/hooks.pynr",
   facebookUrl: "https://facebook.com/hooks.tlpb",
   email: "orders@hooks.example.com",
 } as const;
