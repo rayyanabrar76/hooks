@@ -3,6 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { heroModel } from "@/data/products";
 import { StarLink } from "@/components/motion/StarLink";
 
+// Intrinsic size of /public/newlogo-mark.png (trimmed to content bounds).
+const LOGO_WIDTH = 735;
+const LOGO_HEIGHT = 173;
+
 /**
  * Landing hero — an editorial streetwear splash on white:
  *  - a soft depth vignette + ground shadow so the figure sits in a space;
@@ -16,6 +20,9 @@ import { StarLink } from "@/components/motion/StarLink";
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-svh flex-col items-center justify-center overflow-hidden bg-ink sm:justify-end">
+      {/* The mark above is decorative, so the page heading lives here for
+          screen readers and search engines. */}
+      <h1 className="sr-only">HOOKS — new season streetwear</h1>
       {/* Depth: a barely-there vignette focuses the eye on the figure. */}
       <div
         aria-hidden
@@ -75,13 +82,22 @@ export function Hero() {
         </p>
       </div>
 
-      {/* Giant gradient wordmark the figure emerges from */}
-      <h1
+      {/* Giant brand mark the figure emerges from */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute bottom-[42%] left-1/2 z-0 -translate-x-1/2 animate-[hero-focus_1s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] select-none whitespace-nowrap bg-linear-to-b from-[#c40600] to-[#870400] bg-clip-text font-display text-[37vw] leading-[0.78] tracking-tight text-transparent sm:bottom-[30%] md:text-[27vw]"
+        className="pointer-events-none absolute bottom-[42%] left-1/2 z-0 w-[94vw] max-w-6xl -translate-x-1/2 animate-[hero-focus_1s_cubic-bezier(0.16,1,0.3,1)_0.1s_both] select-none sm:bottom-[30%] md:w-[82vw]"
       >
-        HOOKS
-      </h1>
+        <Image
+          src="/newlogo-mark.png"
+          alt=""
+          width={LOGO_WIDTH}
+          height={LOGO_HEIGHT}
+          priority
+          quality={100}
+          unoptimized
+          className="brand-mark h-auto w-full"
+        />
+      </div>
 
       {/* Figure stage — anchored to the section baseline */}
       <div className="relative z-10 h-[64svh] w-full max-w-lg animate-[hero-rise_0.9s_cubic-bezier(0.16,1,0.3,1)_0.2s_both] px-4 sm:h-[76svh]">

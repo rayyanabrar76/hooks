@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUp } from "lucide-react";
 import { categories } from "@/data/products";
 import { SITE } from "@/lib/site";
@@ -6,6 +7,10 @@ import { NewsletterForm } from "./NewsletterForm";
 import { Logo } from "@/components/brand/Logo";
 import { InstagramIcon, FacebookIcon } from "@/components/brand/icons";
 import { PAYMENT_ICONS } from "@/components/brand/payments";
+
+// Intrinsic size of /public/newlogo-mark.png (trimmed to content bounds).
+const LOGO_WIDTH = 735;
+const LOGO_HEIGHT = 173;
 
 const companyLinks = [
   { href: "/", label: "Home" },
@@ -63,7 +68,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <Logo className="h-12 md:h-14" />
+            <Logo onDark className="h-12 md:h-14" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
               Bold, minimal streetwear. Small, considered drops built to last —
               for people who dress with intent.
@@ -132,9 +137,15 @@ export function Footer() {
 
       {/* Signature wordmark — oversized, subtle sign-off */}
       <div aria-hidden className="pointer-events-none select-none px-4 pt-2">
-        <p className="text-center font-display text-[15vw] leading-[0.78] tracking-tight text-white/5 md:text-[13vw]">
-          HOOKS
-        </p>
+        {/* Light variant at low opacity — a ghosted sign-off on the dark bar. */}
+        <Image
+          src="/newlogo-mark-light.png"
+          alt=""
+          width={LOGO_WIDTH}
+          height={LOGO_HEIGHT}
+          unoptimized
+          className="mx-auto h-auto w-[92vw] max-w-6xl opacity-[0.07]"
+        />
       </div>
 
       {/* Bottom bar */}

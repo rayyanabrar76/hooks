@@ -8,7 +8,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const logo = await readFile(join(process.cwd(), "public/logo-hd.png"));
+  // Light (inverted) variant — the mark is black, the card ground is black.
+  const logo = await readFile(join(process.cwd(), "public/newlogo-mark-light.png"));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
@@ -27,8 +28,8 @@ export default async function Image() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logoSrc}
-          width={780}
-          height={367}
+          width={760}
+          height={179}
           style={{ objectFit: "contain" }}
           alt=""
         />

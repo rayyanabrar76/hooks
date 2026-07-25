@@ -67,7 +67,7 @@ export function StarWipe() {
 
   return (
     <div className="fixed inset-0 z-999 overflow-hidden" aria-hidden>
-      {/* Red star seal */}
+      {/* Graphite star seal */}
       <div
         className="absolute -translate-x-1/2 -translate-y-1/2"
         style={{
@@ -94,8 +94,8 @@ export function StarWipe() {
         >
           <defs>
             <linearGradient id="starwipe-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#e5140d" />
-              <stop offset="100%" stopColor="#9c0400" />
+              <stop offset="0%" stopColor="#2b2b2b" />
+              <stop offset="100%" stopColor="#050505" />
             </linearGradient>
           </defs>
           <path d={STAR_PATH} fill="url(#starwipe-fill)" />
@@ -117,9 +117,13 @@ export function StarWipe() {
           delay: sealed ? 0.22 : 0,
         }}
       >
-        <span className="select-none font-display text-[15vw] leading-none tracking-tight text-white/95 md:text-[8vw]">
-          HOOKS
-        </span>
+        {/* Light variant of the mark — the seal it sits on is near-black. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/newlogo-mark-light.png"
+          alt=""
+          className="w-[62vw] max-w-3xl select-none md:w-[34vw]"
+        />
       </motion.div>
     </div>
   );

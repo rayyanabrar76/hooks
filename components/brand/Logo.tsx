@@ -2,17 +2,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 
-// Intrinsic size of /public/logo-hd.png (hi-res, trimmed to content bounds).
-const LOGO_WIDTH = 1251;
-const LOGO_HEIGHT = 588;
+// Intrinsic size of /public/newlogo-mark.png (trimmed to content bounds).
+const LOGO_WIDTH = 735;
+const LOGO_HEIGHT = 173;
 
 /**
- * Brand wordmark — the real HOOKS logo (PNG) at /public/logo-hd.png.
+ * Brand wordmark — the real HOOKS logo (PNG) at /public/newlogo-mark.png.
  * It's a raster, so it can look slightly soft at large sizes; swap in a vector
  * `logo.svg` from the client for a razor-sharp mark. Pass a Tailwind height
  * utility via `className` (e.g. "h-14 md:h-20"); width scales automatically.
+ *
+ * The artwork is black-on-transparent, so it needs inverting on dark ground.
+ * `brand-mark` handles that automatically for the site's dark theme; pass
+ * `onDark` for surfaces that are dark in *both* themes (e.g. the footer).
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  className,
+  onDark = false,
+}: {
+  className?: string;
+  onDark?: boolean;
+}) {
   return (
     <Link
       href="/"
@@ -23,7 +33,7 @@ export function Logo({ className }: { className?: string }) {
       )}
     >
       <Image
-        src="/logo-hd.png"
+        src="/newlogo-mark.png"
         alt="HOOKS"
         width={LOGO_WIDTH}
         height={LOGO_HEIGHT}
@@ -31,7 +41,7 @@ export function Logo({ className }: { className?: string }) {
         quality={100}
         // Serve the original PNG (no re-encode/upscale) so it's as crisp as possible.
         unoptimized
-        className="h-full w-auto"
+        className={cn("h-full w-auto", onDark ? "invert" : "brand-mark")}
       />
     </Link>
   );

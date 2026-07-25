@@ -13,11 +13,11 @@
   /* Text */
   --color-bone: #0a0a0a; /* primary near-black text            */
   --color-ash: #666666; /* muted / secondary text             */
-  --color-on-accent: #ffffff; /* text/icons on the red accent  */
+  --color-on-accent: #ffffff; /* text/icons on the accent      */
 
-  /* Accent */
-  --color-signal: #e10600; /* signal red — CTAs, wordmark, hover */
-  --color-signal-dim: #b30500;
+  /* Accent — graphite/chrome, matching the monochrome HOOKS mark */
+  --color-signal: #141414; /* CTAs, wordmark, hover            */
+  --color-signal-dim: #3d3d3d;
 
   /* Lines */
   --color-hairline: #e4e4e4; /* hairline borders / dividers     */
@@ -51,6 +51,8 @@ body {
 /* bg-ink / text-bone / border-hairline reference these vars, so the    */
 /* whole UI adapts. The signal red + on-accent stay constant. Toggled   */
 /* by the `dark` class on <html> (set pre-paint by the layout script).  */
+/* The chrome accent flips too: graphite on light, silver on dark, so   */
+/* CTAs keep their contrast against the page in both themes.            */
 /* ------------------------------------------------------------------ */
 html.dark {
   color-scheme: dark;
@@ -60,6 +62,15 @@ html.dark {
   --color-bone: #f2f2f2; /* primary text             */
   --color-ash: #9a9a9a; /* muted / secondary text    */
   --color-hairline: #2a2a2a; /* borders / dividers    */
+  --color-signal: #ededed; /* chrome accent on dark   */
+  --color-signal-dim: #b8b8b8;
+  --color-on-accent: #0a0a0a; /* dark text on chrome  */
+}
+
+/* The mark is solid black with a chrome bevel — invert it on dark ground
+   so it reads as chrome-on-black instead of disappearing. */
+html.dark .brand-mark {
+  filter: invert(1);
 }
 
 /* Condensed display face defaults: wide tracking, tight leading. */
