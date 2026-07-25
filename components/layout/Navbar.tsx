@@ -103,8 +103,9 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Center: logo */}
-        <div className="flex justify-center">
+        {/* Center: logo. Nudged left — the mark is italic, so its wide right
+            edge otherwise crowds the theme toggle. */}
+        <div className="flex -translate-x-2 justify-center md:-translate-x-4">
           <Logo className="h-10 md:h-14" />
         </div>
 
