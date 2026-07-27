@@ -194,6 +194,24 @@ export function getNewProducts(): Product[] {
   return products.filter((p) => p.isNew);
 }
 
+/** Hand-added product using real product photography (not the generated catalogue). */
+export const plainOxfordShirt: Product = {
+  id: "hk-oxford-01",
+  slug: "plain-oxford-shirt",
+  name: "Plain Oxford Shirt",
+  price: 1990,
+  category: "boxy-shirts",
+  images: ["/s1.jpg", "/s2.jpg", "/s3.jpg", "/s4.jpg"],
+  sizes: ["S", "M", "L"],
+  description:
+    "Plain Oxford Shirt — clean, breathable oxford cotton in a classic cut. A wardrobe staple built for everyday wear.",
+  inStock: true,
+  featured: true,
+  isNew: true,
+};
+
+products.push(plainOxfordShirt);
+
 /** Related products: same category, excluding the current slug. */
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
   return products
