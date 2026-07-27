@@ -202,6 +202,7 @@ export const plainOxfordShirt: Product = {
   price: 1990,
   category: "boxy-shirts",
   images: ["/s1.jpg", "/s2.jpg", "/s3.jpg", "/s4.jpg"],
+  cardImages: ["/plain-oxford-shirt-card.jpg"],
   sizes: ["S", "M", "L"],
   description:
     "Plain Oxford Shirt — clean, breathable oxford cotton in a classic cut. A wardrobe staple built for everyday wear.",

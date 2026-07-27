@@ -26,6 +26,7 @@ export function ProductGallery({
           alt={`${name} — view ${active + 1}`}
           fill
           priority
+          loading="eager"
           sizes="(max-width: 1024px) 100vw, 55vw"
           className="object-contain"
         />

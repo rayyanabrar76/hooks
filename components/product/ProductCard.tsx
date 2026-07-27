@@ -22,7 +22,7 @@ export function ProductCard({
   sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
   priority = false,
 }: ProductCardProps) {
-  const [primary, secondary] = product.images;
+  const [primary, secondary] = product.cardImages ?? product.images;
   const soldOut = !product.inStock;
 
   return (
@@ -39,7 +39,7 @@ export function ProductCard({
           sizes={sizes}
           priority={priority}
           className={cn(
-            "object-contain transition-all duration-500 ease-out-brand",
+            "object-cover transition-all duration-500 ease-out-brand",
             "group-hover:scale-[1.04]",
             secondary && "group-hover:opacity-0",
           )}
@@ -52,7 +52,7 @@ export function ProductCard({
             aria-hidden
             fill
             sizes={sizes}
-            className="object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         )}
 

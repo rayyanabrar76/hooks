@@ -40,12 +40,12 @@ export function ShopCard({
           {tagFor(product)}
         </span>
         <Image
-          src={product.images[0]}
+          src={product.cardImages?.[0] ?? product.images[0]}
           alt={product.name}
           fill
           priority={priority}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-          className="object-contain transition-transform duration-500 ease-out-brand group-hover:scale-[1.04]"
+          className="object-cover transition-transform duration-500 ease-out-brand group-hover:scale-[1.04]"
         />
         {soldOut && (
           <span className="absolute inset-0 grid place-items-center bg-white/60 text-xs font-semibold uppercase tracking-widest text-neutral-500">

@@ -30,6 +30,8 @@ export type Product = {
   category: CategorySlug;
   /** At least two images — [0] is primary, [1] is the hover-swap. */
   images: string[];
+  /** Optional card-only crop, for products whose gallery photos have framing that doesn't suit the tile. Falls back to `images`. */
+  cardImages?: string[];
   sizes: string[];
   description: string;
   inStock: boolean;
